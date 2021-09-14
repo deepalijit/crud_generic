@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Allrecords</title>
+{% endblock %}
+
+{% block content %}
+<h2>Laptop Models Available</h2>
+<br>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Model</th>
+            <th>Company</th>
+            <th>RAM</th>
+            <th>ROM</th>
+            <th>Processor</th>
+            <th>Weight</th>
+            <th>Delete Button</th>
+            <th>Update Button</th>
+        </tr>
+        {% for i in object_list %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.lname }}</td>
+                <td>{{i.lcompany }}</td>
+                <td>{{i.lram }}</td>
+                <td>{{i.lrom }}</td>
+                <td>{{i.lprocessor }}</td>
+                <td>{{i.lweight }}</td>
+                <td>
+                    <a href="{% url 'delete' i.id %}" >
+                        <button class="btn btn-danger">DELETE</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'update' i.id %}">
+                        <button class="btn btn-info">
+                            UPDATE
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+<br><br><br>
+{% endblock content %}
+
